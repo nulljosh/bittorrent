@@ -1,18 +1,27 @@
-# bittorrent — Claude Notes
+# bittorrent
 
-## Overview
-TODO: Add project overview.
+BitTorrent client in Rust.
+
+## Architecture
+
+- `src/main.rs` -- CLI entry point
+- `src/bencode.rs` -- Bencode encoder/decoder
+- `src/torrent.rs` -- .torrent file parser
+- `src/tracker.rs` -- HTTP/UDP tracker protocol
+- `src/peer.rs` -- Peer wire protocol (TCP)
+- `src/piece.rs` -- Piece selection and verification (SHA-1)
+- `src/disk.rs` -- File I/O and piece assembly
 
 ## Dev
+
 ```bash
-cd ~/Documents/Code/bittorrent
-# add dev command
+cargo build
+cargo test
+cargo clippy
 ```
 
-## Deploy
-```bash
-git push origin main
-```
+## Conventions
 
-## Status
-In development.
+- Rust 2021 edition
+- tokio for async networking
+- No unsafe blocks unless absolutely necessary
